@@ -4,7 +4,7 @@ import BentoBox from "@/components/BentoBox";
 const features = [
   {
     gradientDirection: "300% 300% at 90% 0%",
-    bgAnimationSrc: "/file.svg",
+    bgVideoSrc: "/animations/cpu.webm",
     subtitle: "TRANSPARENT EXECUTION ANALYTICS",
     title:
       "Real-Time, Automated Execution lightning-fast trade execution with zero emotional bias, ensuring you never miss an opportunity",
@@ -12,35 +12,35 @@ const features = [
   },
   {
     gradientDirection: "300% 300% at 95% 100%",
-    bgAnimationSrc: "/globe.svg",
+    bgVideoSrc: "/animations/slider.webm",
     subtitle: "VOLATILITY AUTOMATION",
     title: "ATR-based dynamic risk management adapts to real-time market",
     size: "col-span-7",
   },
   {
     gradientDirection: "300% 300% at 0% 95%",
-    bgAnimationSrc: "/next.svg",
+    bgVideoSrc: "/animations/multi.webm",
     subtitle: "CONFIRMATION ENGINES",
     title: "Confirmation engines reduce false signals, maximizing win rate",
     size: "col-span-6",
   },
   {
     gradientDirection: "300% 300% at 0% 0%",
-    bgAnimationSrc: "/vercel.svg",
+    bgVideoSrc: "/animations/heatmap.webm",
     subtitle: "VOLUME PROFILE",
     title: "Advanced VPVR algorithms confirm momentum and liquidity zones",
     size: "col-span-8",
   },
   {
     gradientDirection: "300% 300% at 0% 95%",
-    bgAnimationSrc: "/window.svg",
+    bgVideoSrc: "/animations/pixelzone.webm",
     subtitle: "SIGNAL PRECISION",
     title: "Signals trigger only near key areas for optimal risk/reward trades",
     size: "col-span-7",
   },
   {
     gradientDirection: "300% 300% at 5% -5%",
-    bgAnimationSrc: "/logo-white.png",
+    bgVideoSrc: "/animations/trendlines.webm",
     subtitle: "STRUCTURE AWARENESS",
     title:
       "Proprietary trendline detection identifies high-probability trading opportunities",
@@ -80,7 +80,7 @@ const Features = () => {
           <BentoBox
             key={i}
             gradientDirection={f.gradientDirection}
-            bgAnimationSrc={f.bgAnimationSrc}
+            bgVideoSrc={f.bgVideoSrc}
             subtitle={f.subtitle}
             title={f.title}
             size={f.size}
