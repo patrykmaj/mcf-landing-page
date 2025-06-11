@@ -52,6 +52,9 @@ module.exports = {
       },
       backgroundSize: {
         '200%': '200% 200%',
+      },
+      scale: {
+        '102': '1.02',
       }
     },
   },

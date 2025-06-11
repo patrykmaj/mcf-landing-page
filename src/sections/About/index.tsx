@@ -379,7 +379,7 @@ const AboutSection = () => {
   return (
     <>
       {/* Title Section */}
-      <section className="relative w-full  rounded-b-[50px] z-45">
+      <section id="about" className="relative w-full  rounded-b-[50px] z-45">
         <div className="w-full max-w-[1440px] mx-auto px-6 pb-24">
           <h2 className="text-[2rem] sm:text-[3rem] lg:text-[4rem] font-monda">
             <GradientText colors="from-[#5e71bd] via-white to-[#8C9CDB]" animationSpeed="4s">

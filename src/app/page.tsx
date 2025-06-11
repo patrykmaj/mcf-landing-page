@@ -11,6 +11,7 @@ export default function Home() {
   return (
     <main className="relative">
       <Hero />
+
       <Product />
       <Features />
       <About />

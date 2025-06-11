@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import GlowButton from "@/components/GlowButton";
 import HighlightButton from "@/components/HighlightButton";
+import ShinyText from '@/components/ShinyText';
 
 const CheckIcon = () => (
   <Image
@@ -49,19 +50,19 @@ const PricingSection = () => {
             className="relative flex flex-col sm:flex-row xl:flex-col backdrop-blur-[10px] rounded-[1.5625rem] w-full xl:max-w-[29rem] mx-auto xl:mx-0 h-auto xl:h-[40rem] p-4 xl:pb-8 "
             style={{
               background:
-                "radial-gradient(200% 200% at 50% 10%, rgba(0, 0, 0, 0.4) 24%, #59295bbf 50%)",
+                "radial-gradient(200% 200% at 50% 10%, rgba(0, 0, 0, 1) 24%, #59295bbf 50%)",
               border: "1px solid #694578",
               boxShadow:
                 "0px 0px 2rem 0.5rem rgba(0, 0, 0, 0.5), 0px 0px 2rem 0rem rgba(215, 0, 255, 0.5)",
             }}
           >
             {/* Inner Content Card */}
-            <div className="bg-[#ff4cff1f] backdrop-blur-sm rounded-[1.5625rem] py-2 flex flex-col items-start xl:mb-6 sm:max-w-[22rem] sm:min-w-[22rem] xl:max-w-[25.250rem]">
+            <div className="bg-[#ff4cff1f] backdrop-blur- rounded-[1.5625rem] py-2 flex flex-col items-start xl:mb-6 sm:max-w-[22rem] sm:min-w-[22rem] xl:max-w-[25.250rem]">
               <h3
                 className="mx-4  text-white font-geist text-[1.25rem] sm:text-[1.375rem]"
                 style={{ textShadow: "0 0 0.9375rem rgba(255, 255, 255, 0.75)" }}
               >
-                MCF Signals Access
+                <ShinyText text="MCF Signals Access" disabled={false} speed={3} className='custom-class' /> 
               </h3>
               <hr className="w-full border-t left-0 border-white/20 my-2" />
               <p className="mx-4  font-poppins text-sm sm:text-base font-light text-white/60 leading-snug">
@@ -69,10 +70,10 @@ const PricingSection = () => {
               </p>
               <div className="mx-4 my-1 sm:my-3 flex items-baseline">
                 <span
-                  className="text-white font-poppins text-[2rem] sm:text-[2.25rem]"
+                  className="price-bounce-1 text-white font-poppins text-[2rem] sm:text-[2.25rem]"
                   style={{ textShadow: "0 0 0.9375rem rgba(255, 255, 255, 0.75)" }}
                 >
-                  $750
+                  <ShinyText text="$750" disabled={false} speed={2} className='custom-class' />
                 </span>
                 <span className="ml-2 font-poppins text-[#834D92] text-[0.65rem] sm:text-[0.875rem] font-regular">
                   per month
@@ -128,7 +129,7 @@ const PricingSection = () => {
             className="z-20 relative flex flex-col sm:flex-row xl:flex-col backdrop-blur-[10px] rounded-[1.5625rem] w-full xl:max-w-[29rem] mx-auto xl:mx-0 h-auto xl:h-[41.5rem]  p-4 xl:pt-[1.5rem] xl:pb-8"
             style={{
               background:
-                "radial-gradient(195.26% 192.37% at 50% -4.35%, rgba(0, 0, 0, 0.50) 19.79%, #0021C8 47.75%, #FFF 68.92%)",
+                "radial-gradient(195.26% 192.37% at 50% -4.35%, rgba(0, 0, 0, 1) 19.79%, #0021C8 47.75%, #FFF 68.92%)",
               border: "1px solid #5057BF",
               boxShadow:
                 "0px 0px 2rem 0.5rem rgba(0, 0, 0, 0.5), 0px 0px 4rem 1rem #002aff9a",
@@ -144,7 +145,7 @@ const PricingSection = () => {
                 className="mx-4 text-white font-geist text-[1.25rem] sm:text-[1.375rem]"
                 style={{ textShadow: "0 0 0.9375rem rgba(255, 255, 255, 0.75)" }}
               >
-                MCF Institutional Intelligence Suite
+                <ShinyText text="MCF Institutional Intelligence Suite" disabled={false} speed={3} className='custom-class' />
               </h3>
               <hr className="w-full border-t left-0 border-white/20 my-2" />
               <p className="mx-4 font-poppins text-sm sm:text-base font-light text-white/60 leading-snug">
@@ -152,10 +153,10 @@ const PricingSection = () => {
               </p>
               <div className="mx-4 my-1 sm:my-3 flex items-center">
                 <span
-                  className="text-white font-poppins text-[2rem] sm:text-[2.25rem]"
+                  className="price-bounce-2 text-white font-poppins text-[2rem] sm:text-[2.25rem]"
                   style={{ textShadow: "0 0 0.9375rem rgba(255, 255, 255, 0.75)" }}
                 >
-                  $9,450
+                  <ShinyText text="$9,450" disabled={false} speed={2} className='custom-class' />
                 </span>
                 <span className="ml-2 font-poppins text-[#5d6bc3] text-[0.65rem] sm:text-[0.875rem] font-regular">
                   billed monthly <br /> other billing options available
@@ -212,7 +213,7 @@ const PricingSection = () => {
             className="relative flex flex-col sm:flex-row xl:flex-col backdrop-blur-[10px] rounded-[1.5625rem] w-full xl:max-w-[29rem] mx-auto xl:mx-0 h-auto xl:h-[40rem] p-4 xl:pb-8"
             style={{
               background:
-                "radial-gradient(200% 200% at 50% 10%, rgba(0, 0, 0, 0.4) 24%, rgba(110, 61, 23, 0.75) 50%)",
+                "radial-gradient(200% 200% at 50% 10%, rgba(0, 0, 0, 1) 24%, rgba(110, 61, 23, 0.75) 50%)",
               border: "1px solid #574029",
               boxShadow:
                 "0px 0px 2rem 0.5rem rgba(0, 0, 0, 0.5), 0px 0px 2rem 0rem rgba(255, 132, 0, 0.5)",
@@ -224,7 +225,7 @@ const PricingSection = () => {
                 className="mx-4 text-white font-geist text-[1.25rem] sm:text-[1.375rem]"
                 style={{ textShadow: "0 0 0.9375rem rgba(255, 255, 255, 0.75)" }}
               >
-                90 Day - Trading Strategy Program
+                <ShinyText text="90 Day - Trading Strategy Program" disabled={false} speed={3} className='custom-class' />
               </h3>
               <hr className="w-full border-t left-0 border-white/20 my-2" />
               <p className="mx-4 font-poppins text-sm sm:text-base font-light text-white/60 leading-snug">
@@ -232,10 +233,10 @@ const PricingSection = () => {
               </p>
               <div className="mx-4 my-1 sm:my-3 flex items-center">
                 <span
-                  className="text-white font-poppins text-[2rem] sm:text-[2.25rem]"
+                  className="price-bounce-3 text-white font-poppins text-[2rem] sm:text-[2.25rem]"
                   style={{ textShadow: "0 0 0.9375rem rgba(255, 255, 255, 0.75)" }}
                 >
-                  $5,000
+                  <ShinyText text="$5,000" disabled={false} speed={2} className='custom-class' />
                 </span>
                 <span className="ml-2 font-poppins text-[#875E46] text-[0.65rem] md:text-[0.875rem] font-regular">
                   one time payment
@@ -290,8 +291,8 @@ const PricingSection = () => {
         {/* CTA Section */}
         <div className="relative text-center flex flex-col items-center gap-4 lg:gap-[1.5625rem] mt-12 lg:mt-16 px-4 text-shadow-xl">
           <h2 
-            className="text-white font-monda text-[1.75rem] sm:text-[2rem] lg:text-[2.5rem] font-normal leading-none"
-            style={{textShadow: "0px 0px 0.4125rem rgba(255, 255, 255, 0.25), 0px 0px 1.875rem rgba(255, 255, 255, 0.33)"}}
+            className="text-white text-[1.6rem] sm:text-[2rem] lg:text-[2.25rem] font-normal leading-none"
+            style={{textShadow: "0px 0px 0.5rem rgba(255, 255, 255, 0.75), 0px 0px 1.875rem rgba(255, 255, 255, 0.73)", fontFamily: "var(--font-monda)"}}
           >
             Which Solution Should I Choose?
           </h2>
@@ -303,11 +304,11 @@ const PricingSection = () => {
               fontWeight: 200 
             }}
           >
-            If you don't know which product to choose lets get on a call! Well get you through our offer blah blah blah!
+            If you don&apos;t know which product to choose lets get on a call! Well get you through our offer blah blah blah!
           </p>
           <GlowButton
             width="100%"
-            className="max-w-[22.5rem]"
+            className="max-w-[22.5rem] mb-24"
           >
             Book a call
           </GlowButton>

@@ -17,7 +17,7 @@ const GradientText: React.FC<GradientTextProps> = ({
     <span
       className={`
         inline-block text-transparent bg-clip-text bg-gradient-to-r ${colors}
-        animate-gradient-x
+        animate-gradient-text
         ${className}
       `}
       style={{

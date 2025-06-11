@@ -51,7 +51,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="w-full max-w-[90rem] mx-auto px-4 lg:px-6 pb-[6.25rem] z-12 mt-16">
+    <section id="features" className="w-full max-w-[90rem] mx-auto px-4 lg:px-6 pb-[6.25rem] z-12 mt-16">
       <div>
         <h2 className="text-[2rem] sm:text-[3rem] lg:text-[4rem] font-monda">
           <GradientText colors="from-[#8C9CDB] via-white to-[#8C9CDB]" animationSpeed="4s">

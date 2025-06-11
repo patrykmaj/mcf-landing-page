@@ -1,9 +1,9 @@
-import GlowButton from "@/components/GlowButton";
 import React from "react";
 
 const Product = () => {
   return (
     <section
+      id="product"
       className="relative flex flex-col items-center justify-center min-h-[43.75rem] mx-4 lg:mx-6 mt-4 lg:mt-6 mb-0 overflow-hidden rounded-[1.875rem] lg:rounded-[3.125rem]"
       style={{
         background:

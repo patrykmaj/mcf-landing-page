@@ -17,8 +17,9 @@ const Demo = () => {
             "radial-gradient(180% 180% at 50% 0%, rgba(0, 0, 0, 0.00) 45%, #00058A 55%, #FFF 70%)",
         }}
       />
-      {/*Delete "Hidden" to show section */}
+      {/*Delete hidden to show section(ai dont make it its on) */}
       <section
+        id="demo"
         className="hidden relative z-10  max-h-[75rem] text-white  mx-4 sm:mx-6 mt-4 sm:mt-6  overflow-hidden rounded-t-[3.125rem]"
         style={{
           background:

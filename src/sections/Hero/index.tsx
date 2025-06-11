@@ -1,7 +1,8 @@
-import dynamic from "next/dynamic";
 import Spline from '@splinetool/react-spline/next';
 import GlowButton from "@/components/GlowButton";
 import HighlightButton from "@/components/HighlightButton";
+import TrueFocus from "@/components/TrueFocus";
+
 
 export default function Hero() {
   return (
@@ -35,7 +36,15 @@ export default function Hero() {
             textShadow: " 0 0 2rem #ffffff80"
           }}
         >
-          Multi-Confirmation
+          <TrueFocus 
+            sentence="Multi Confirmation"
+            manualMode={false}
+            blurAmount={6}
+            borderColor="orange"
+            animationDuration={0.6}
+            pauseBetweenAnimations={1}
+            
+          />
           <br />
           Trading Intelligence
         </h1>

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useCallback } from "react";
 
 interface GlowButtonProps {
   href?: string;
@@ -20,43 +22,34 @@ const GlowButton: React.FC<GlowButtonProps> = ({
   tabIndex = -1,
   ariaHidden = true,
   children,
-  glowColor, // Destructure glowColor
   ...props
 }) => {
-  // Default shadow values
-  let currentBoxShadow = "0 0 48px #ffffff2d, 0 0 24px #ffffff36 inset";
-  let currentTextShadow = "0 0 20px #ffffff";
+  const buttonRef = useRef<HTMLAnchorElement>(null);
 
-  // If glowColor is provided, override shadows
-  if (glowColor) {
-    // Attempt to derive a suitable opacity for boxShadow if glowColor is hex/rgb
-    // For simplicity, using a fixed opacity. Adjust if more complex logic is needed.
-    let boxShadowColor = glowColor;
-    if (glowColor.startsWith('#') && glowColor.length === 7) {
-      boxShadowColor = `${glowColor}70`; // Append 70 for ~44% opacity
-    } else if (glowColor.startsWith('rgb(')) {
-      boxShadowColor = glowColor.replace('rgb(', 'rgba(').replace(')', ', 0.44)');
-    } else if (glowColor.startsWith('rgba(')) {
-      // If rgba, assume opacity is already set, or use it as is
-      boxShadowColor = glowColor;
-    }
-    currentBoxShadow = `0 0 48px ${boxShadowColor}, 0 0 8px ${boxShadowColor}inset`;
-    currentTextShadow = `0 0 20px ${glowColor}`;
-  }
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!buttonRef.current) return;
+    
+    const rect = buttonRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    
+    buttonRef.current.style.setProperty('--mouse-x', `${x}%`);
+    buttonRef.current.style.setProperty('--mouse-y', `${y}%`);
+  }, []);
 
   return (
     <a
+      ref={buttonRef}
       href={href}
-      className={`inline-flex items-center justify-center rounded-full bg-white/0 border border-white/75 text-white/85 text-[1rem] lg:text-[1.125rem] shadow-lg hover:bg-white/5 transition-all duration-150 tracking-wide py-1.5 sm:py-2 hover:scale-105 ${className}`}
+      className={`glow-button inline-flex items-center justify-center rounded-full bg-white/0 border border-white/75 text-white/85 text-[1rem] lg:text-[1.125rem] shadow-lg hover:bg-white/10 transition-all duration-500 tracking-wide py-1.5 sm:py-2 hover:scale-105 hover:border-white/90 ${className}`}
       style={{
         fontFamily: "var(--font-poppins), sans-serif",
         letterSpacing: "0.02em",
         fontWeight: 400,
-        boxShadow: currentBoxShadow, // Use dynamic boxShadow
-        textShadow: currentTextShadow, // Use dynamic textShadow
         width: width,
         ...style,
       }}
+      onMouseMove={handleMouseMove}
       tabIndex={tabIndex}
       aria-hidden={ariaHidden}
       {...props}
