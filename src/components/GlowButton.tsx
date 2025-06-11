@@ -15,8 +15,7 @@ interface GlowButtonProps {
 const GlowButton: React.FC<GlowButtonProps> = ({
   href = "#",
   width = "180px",
-  height = "50px",
-  className = "",
+  className,
   style = {},
   tabIndex = -1,
   ariaHidden = true,
@@ -48,7 +47,7 @@ const GlowButton: React.FC<GlowButtonProps> = ({
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center rounded-full bg-white/0 border border-white/75 text-white/85 text-[20px] shadow-lg hover:bg-white/5 transition-all duration-150  tracking-wide ${className}`}
+      className={`inline-flex items-center justify-center rounded-full bg-white/0 border border-white/75 text-white/85 text-[1rem] lg:text-[1.125rem] shadow-lg hover:bg-white/5 transition-all duration-150 tracking-wide py-1.5 sm:py-2 hover:scale-105 ${className}`}
       style={{
         fontFamily: "var(--font-poppins), sans-serif",
         letterSpacing: "0.02em",
@@ -56,7 +55,6 @@ const GlowButton: React.FC<GlowButtonProps> = ({
         boxShadow: currentBoxShadow, // Use dynamic boxShadow
         textShadow: currentTextShadow, // Use dynamic textShadow
         width: width,
-        height: height,
         ...style,
       }}
       tabIndex={tabIndex}

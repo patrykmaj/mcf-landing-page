@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface BentoBoxProps {
   gradientDirection?: string; // e.g. 'to-br', 'to-tl', etc.
@@ -21,7 +22,7 @@ const BentoBox: React.FC<BentoBoxProps> = ({
 }) => {
   return (
     <div
-      className={`relative rounded-[25px] overflow-hidden p-4 flex flex-col justify-end min-h-[480px] h-[480px] shadow-xl bento-box ${size} z-10`}
+      className={`relative rounded-[1.5625rem] overflow-hidden p-4 flex flex-col justify-end min-h-[30rem] h-[30rem] shadow-xl bento-box ${size} z-10`}
     >
       {bgVideoSrc && (
         <video
@@ -36,40 +37,40 @@ const BentoBox: React.FC<BentoBoxProps> = ({
       <div 
         className="absolute inset-0 z-5"
         style={{
-          background: `radial-gradient(${gradientDirection}, rgba(0, 0, 0, 0.00) 28%, rgba(4, 9, 99, 0.478)35%, rgba(99, 116, 225, 0.611) 45%,rgb(255, 255, 255) 50%) `,
+          background: `radial-gradient(${gradientDirection}, rgba(0, 0, 0, 0.00) 28%, rgba(4, 9, 99, 0.9)41%, rgba(34, 55, 195, 0.8) 44%,rgb(255, 255, 255) 51%) `,
           border: "1px solid #0b0d22",
         }}
       />
       {bgAnimationSrc && !bgVideoSrc && (
-        <img
+        <Image
           src={bgAnimationSrc}
           alt="Background animation"
-          className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none z-0"
+          fill
+          className="object-cover opacity-40 pointer-events-none z-0"
         />
       )}
       <div className="relative z-10">
         <div
-          className="mb-2  uppercase text-[16px]"
+            className="mb-2 font-medium uppercase text-[0.9rem] sm:text-[1rem]"
           style={{
             fontFamily: 'var(--font-poppins), sans-serif',
-            fontWeight: 500,
             color: '#3D4577',
+            textShadow: '0 0 1rem rgb(0, 0, 0)',
           }}
         >
           {subtitle}
         </div>
         <div
+        className="text-[1.25rem] font-light sm:text-[1.375rem] xl:text-[1.625rem] text-white tracking-tight "
           style={{
             fontFamily: 'var(--font-poppins), sans-serif',
-            fontWeight: 300,
             lineHeight: 1.2,
-            fontSize: 26,
             color: '#fff',
           }}
         >
           {title}
         </div>
-        {children && <div className="text-sm text-blue-100 mt-1">{children}</div>}
+        {children && <div className="text-[1rem] text-blue-100 mt-1">{children}</div>}
       </div>
     </div>
   );

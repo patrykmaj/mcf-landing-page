@@ -1,21 +1,24 @@
+import dynamic from "next/dynamic";
 import Spline from '@splinetool/react-spline/next';
-import GlowButton from '@/components/GlowButton';
+import GlowButton from "@/components/GlowButton";
+import HighlightButton from "@/components/HighlightButton";
 
 export default function Hero() {
   return (
     <>
     <section
-      className="relative flex items-center min-h-[calc(100vh-24px)] max-h-[1030px] mx-6 overflow-hidden rounded-b-[50px]"
+      className="relative flex items-baseline pt-[6rem] sm:items-center h-[calc(100vh-2rem)] lg:h-[calc(100vh-3rem)] m-4 lg:m-6 overflow-hidden rounded-b-[1.875rem] lg:rounded-b-[3.125rem]"
       style={{
+        // boxShadow: "0px 0.5rem 3rem 0.625rem rgba(42, 60, 255, 0.30)", // Figma: subtle blue shadow
       }}
     >
       {/* Spline animation background */}
-      <div className="absolute inset-0 w-full h-full z-0">
+      <div className="absolute inset-0 w-[1300px] -left-[600px] top-[64px] sm:left-0 sm:w-full h-full z-0">
         <Spline scene="https://prod.spline.design/UypH9NeByOMsn96Q/scene.splinecode" />
       </div>
       {/* Radial gradient overlay */}
       <div
-        className="absolute inset-0 w-full h-full z-10 pointer-events-none rounded-b-[50px]"
+        className="absolute inset-0 w-full h-full z-10 pointer-events-none rounded-b-[1.875rem] lg:rounded-b-[3.125rem]"
         style={{
           background:
             "radial-gradient(180% 180% at 50% 0%, rgba(0, 0, 0, 0.00) 45%, #00058A 55%, #FFF 70%)",
@@ -23,39 +26,50 @@ export default function Hero() {
         aria-hidden="true"
       />
       {/* Content */}
-      <div className="relative z-20 items-start w-full max-w-[1440px] text-left px-6 mx-auto" aria-hidden="true">
+      <div className="relative z-20 items-start w-full max-w-[90rem] text-center sm:text-left p-4 sm:p-6 mx-auto" aria-hidden="true">
         <h1
-          className="text-white text-[84px] font-black leading-[1] drop-shadow-[0_4px_32px_rgba(42,60,255,0.18)]"
+          className="text-white text-[2.25rem] sm:text-[3rem] lg:text-[4.5rem] font-black leading-[1.08] drop-shadow-[0_0.25rem_2rem_rgba(42,60,255,0.18)] tracking-[-0.02em] hero-glow"
           style={{
             fontFamily:"var(--font-monda)",
-            textShadow: " 0 0 42px #868686"
+            letterSpacing: "-0.02em",
+            textShadow: " 0 0 2rem #ffffff80"
           }}
         >
-          Multi-Confirmation 
-          <br /> Trading Intelligence
+          Multi-Confirmation
+          <br />
+          Trading Intelligence
         </h1>
         <p
-          className="mt-6 text-white/75 text-[22px] font-light max-w-[800px] drop-shadow-[0_2px_12px_rgba(42,60,255,0.10)] tracking-wider"
+          className="mt-3 sm:mt-6 text-white/80 text-[1rem] lg:text-[1.25rem] font-light max-w-2xl drop-shadow-[0_0.125rem_0.75rem_rgba(42,60,255,0.10)] tracking-[-0.04em] sm:tracking-[0.02em]"
           style={{
             fontFamily:
-              "var(var(--font-poppins), sans-serif",
-              lineHeight: 1.4,
-            fontWeight: 200,
-          }}
+             " var(--font-poppins), sans-serif",
+             fontWeight: 100,
+                      }}
         >
           Every trade validated by structure, volume, and volatility
-          <br />– engineered for high-probability precision to minimize risk
+          <br className="hidden sm:block" /> – engineered for high-probability precision to minimize risk
         </p>
-        <div className="mt-6">
-          <GlowButton
+        <div className="hidden sm:inline-block sm:mt-8">
+           <GlowButton
             href="#features"
-            width="180px"
-            height="50px"
+            width="11.25rem"
             tabIndex={-1}
             ariaHidden={true}
           >
             Learn More
           </GlowButton>
+        </div>
+         <div className="mt-4 sm:hidden">
+          <HighlightButton
+          className="sm:hidden"
+            href="#features"
+            width="11.25rem"
+            tabIndex={-1}
+            ariaHidden={true}
+          >
+            Learn More
+          </HighlightButton>
         </div>
       </div>
     </section>
