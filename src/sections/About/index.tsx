@@ -409,7 +409,7 @@ const AboutSection = () => {
               Scroll to explore
             </p>
             <div className="w-6 h-10 border-2 border-white/25 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-white/30 rounded-full mt-2 animate-bounce"></div>
+              <div className="w-1 h-3 bg-[#ffa500] rounded-full mt-2 animate-bounce"></div>
             </div>
           </div>
         </div>
@@ -469,7 +469,7 @@ const AboutSection = () => {
                       key={index}
                       className={`h-1 transition-all duration-500 ease-out ${
                         index === currentTextIndex
-                          ? "w-8 bg-gradient-to-r from-white/80 to-white shadow-sm"
+                          ? "w-8 bg-gradient-to-r from-[#ffa500] to-[#ffa500] shadow-sm"
                           : "w-2 bg-white/30 hover:bg-white/50"
                       }`}
                       style={{

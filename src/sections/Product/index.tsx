@@ -50,13 +50,12 @@ const Product = () => {
           </div>
           {/* Play button overlay (optional) */}
           <button
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 border border-white/30 rounded-full p-3 sm:p-4 shadow-lg hover:bg-white/20 transition"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 border border-white/30 rounded-full p-1.5 sm:p-2 shadow-lg hover:bg-white/20 transition"
             style={{ backdropFilter: "blur(0.5rem)" }}
             aria-label="Play demo video"
           >
-            <svg width="36" height="36" className="sm:w-12 sm:h-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="24" fill="#fff" fillOpacity="0.18"/>
-              <path d="M20 17L32 24L20 31V17Z" fill="#fff"/>
+            <svg width="18" height="18" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#fff"/>
             </svg>
           </button>
         </div>

@@ -4,6 +4,7 @@ import GlowButton from "@/components/GlowButton";
 import HighlightButton from "@/components/HighlightButton";
 import ShinyText from '@/components/ShinyText';
 
+
 const CheckIcon = () => (
   <Image
     src="/icons/check-icon.svg"
@@ -47,7 +48,7 @@ const PricingSection = () => {
         <div className="z-18 relative grid grid-cols-1 xl:grid-cols-3 gap-[1rem] xl:gap-[1.5rem] mt-20 xs:mt-24 sm:mt-32 md:mt-48 lg:mt-64 xl:mt-72 items-end justify-center max-w-[90rem] mx-auto">
           {/* Card 1 */}
           <div
-            className="relative flex flex-col sm:flex-row xl:flex-col backdrop-blur-[10px] rounded-[1.5625rem] w-full xl:max-w-[29rem] mx-auto xl:mx-0 h-auto xl:h-[40rem] p-4 xl:pb-8 "
+            className="relative flex flex-col sm:flex-row xl:flex-col backdrop-blur-[10px] rounded-[1.5625rem] w-full xl:max-w-[29rem] mx-auto xl:mx-0 h-auto xl:h-[40rem] p-4 xl:pb-8"
             style={{
               background:
                 "radial-gradient(200% 200% at 50% 10%, rgba(0, 0, 0, 1) 24%, #59295bbf 50%)",
@@ -126,7 +127,7 @@ const PricingSection = () => {
           </div>
           {/* Card 2 (Highlighted) */}
           <div
-            className="z-20 relative flex flex-col sm:flex-row xl:flex-col backdrop-blur-[10px] rounded-[1.5625rem] w-full xl:max-w-[29rem] mx-auto xl:mx-0 h-auto xl:h-[41.5rem]  p-4 xl:pt-[1.5rem] xl:pb-8"
+            className="z-20 relative flex flex-col sm:flex-row xl:flex-col backdrop-blur-[10px] rounded-[1.5625rem] w-full xl:max-w-[29rem] mx-auto xl:mx-0 h-auto xl:h-[41.5rem] p-4 xl:pt-[1.5rem] xl:pb-8"
             style={{
               background:
                 "radial-gradient(195.26% 192.37% at 50% -4.35%, rgba(0, 0, 0, 1) 19.79%, #0021C8 47.75%, #FFF 68.92%)",

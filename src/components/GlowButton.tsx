@@ -22,6 +22,7 @@ const GlowButton: React.FC<GlowButtonProps> = ({
   tabIndex = -1,
   ariaHidden = true,
   children,
+  glowColor,
   ...props
 }) => {
   const buttonRef = useRef<HTMLAnchorElement>(null);
@@ -47,8 +48,9 @@ const GlowButton: React.FC<GlowButtonProps> = ({
         letterSpacing: "0.02em",
         fontWeight: 400,
         width: width,
+        ...(glowColor ? { '--glow-color': glowColor } as React.CSSProperties : {}),
         ...style,
-      }}
+      } as React.CSSProperties}
       onMouseMove={handleMouseMove}
       tabIndex={tabIndex}
       aria-hidden={ariaHidden}

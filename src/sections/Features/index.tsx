@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-import BentoBox from "@/components/BentoBox";
+import BentoBox3D from "@/components/BentoBox3D"
 import GradientText from "@/components/GradientText";
 
 const features = [
@@ -69,14 +70,14 @@ const Features = () => {
       </div>
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-25 gap-[1rem] lg:gap-[1.5rem]">
         {features.map((f, i) => (
-          <BentoBox
+          <BentoBox3D
             key={i}
             gradientDirection={f.gradientDirection}
             bgVideoSrc={f.bgVideoSrc}
             subtitle={f.subtitle}
             title={f.title}
             size={f.size}
-          />
+            />
         ))}
       </div>
     </section>

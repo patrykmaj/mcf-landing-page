@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState, RefObject } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "@/app/globals.css";
 
@@ -33,6 +33,7 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   pauseBetweenAnimations = 1,
   className = "",
   style = {},
+  ...props
 }) => {
   const words = sentence.split(" ");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -94,7 +95,8 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
     <div 
       className={`focus-container ${className}`} 
       ref={containerRef}
-      style={style}
+      style={{...style} as React.CSSProperties}
+      {...props}
     >
       {words.map((word, index) => {
         const isActive = index === currentIndex;
@@ -120,7 +122,7 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
                     : `blur(${blurAmount}px)`,
                 transition: `filter ${animationDuration}s ease`,
                 "--border-color": borderColor,
-                "--glow-color": glowColor,
+                ...(glowColor ? { "--glow-color": glowColor } : {}),
               } as React.CSSProperties
             }
             onMouseEnter={() => handleMouseEnter(index)}
@@ -146,7 +148,7 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
         style={
           {
             "--border-color": borderColor,
-            "--glow-color": glowColor,
+            ...(glowColor ? { "--glow-color": glowColor } : {}),
           } as React.CSSProperties
         }
       >
