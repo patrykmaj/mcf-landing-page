@@ -379,21 +379,23 @@ const AboutSection = () => {
   return (
     <>
       {/* Title Section */}
-      <section id="about" className="relative w-full  rounded-b-[50px] z-45">
+      <section id="about" className="fade-in-up relative w-full rounded-b-[50px] z-45" style={{ animationDelay: "0.1s" }}>
         <div className="w-full max-w-[1440px] mx-auto px-6 pb-24">
-          <h2 className="text-[2rem] sm:text-[3rem] lg:text-[4rem] font-monda">
+          <h2 className="fade-in-up text-[2rem] sm:text-[3rem] lg:text-[4rem] font-monda" style={{ animationDelay: "0.2s" }}>
             <GradientText colors="from-[#5e71bd] via-white to-[#8C9CDB]" animationSpeed="4s">
               What Sets MCF Apart?
             </GradientText>
           </h2>
           <p
-            className="text-white/75 text-[1rem] lg:text-[1.25rem] max-w-[40rem] lg:max-w-[50rem] tracking-[-0.04em] sm:tracking-[0.04em] mt-2"
+            className="fade-in-up text-white/75 text-[1rem] lg:text-[1.25rem] max-w-[40rem] lg:max-w-[50rem] tracking-[-0.04em] sm:tracking-[0.04em] mt-2"
             style={{ 
               fontFamily: "var(--font-poppins), sans-serif", 
               lineHeight: 1.4, 
-              fontWeight: 200 
+              fontWeight: 200,
+              animationDelay: "0.4s"
             }}
           >
+          
             Our multi-confirmation system leverages market structure, volume
             profiling, and volatility analytics to support data-driven trade
             decisions and risk management engines that adapt to changing market
@@ -401,14 +403,14 @@ const AboutSection = () => {
           </p>
 
           {/* Scroll Indicator */}
-          <div className="flex flex-col items-center mt-12">
+          <div className="fade-in-up flex flex-col items-center mt-12" style={{ animationDelay: "0.6s" }}>
             <p
-              className="text-white/25 text-[14px] mb-2"
-              style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+              className="fade-in text-white/25 text-[14px] mb-2"
+              style={{ fontFamily: "var(--font-poppins), sans-serif", animationDelay: "0.7s" }}
             >
               Scroll to explore
             </p>
-            <div className="w-6 h-10 border-2 border-white/25 rounded-full flex justify-center">
+            <div className="scale-in w-6 h-10 border-2 border-white/25 rounded-full flex justify-center" style={{ animationDelay: "0.8s" }}>
               <div className="w-1 h-3 bg-[#ffa500] rounded-full mt-2 animate-bounce"></div>
             </div>
           </div>

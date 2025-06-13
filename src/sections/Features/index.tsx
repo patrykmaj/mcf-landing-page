@@ -52,23 +52,24 @@ const features = [
 
 const Features = () => {
   return (
-    <section id="features" className="w-full max-w-[90rem] mx-auto px-4 lg:px-6 pb-[6.25rem] z-12 mt-16">
+    <section id="features" className="fade-in-up w-full max-w-[90rem] mx-auto px-4 lg:px-6 pb-[6.25rem] z-12 mt-16" style={{ animationDelay: "0.1s" }}>
       <div>
-        <h2 className="text-[2rem] sm:text-[3rem] lg:text-[4rem] font-monda">
+        <h2 className="fade-in-up text-[2rem] sm:text-[3rem] lg:text-[4rem] font-monda" style={{ animationDelay: "0.2s" }}>
           <GradientText colors="from-[#8C9CDB] via-white to-[#8C9CDB]" animationSpeed="4s">
             MCF Trading Intelligence Features
           </GradientText>
         </h2>
         <p
-          className="text-white/75 text-[1rem] lg:text-[1.25rem] max-w-[40rem] lg:max-w-[50rem] tracking-[-0.04em] sm:tracking-[0.04em] mt-2"
-          style={{ fontFamily: "var(--font-poppins), sans-serif",lineHeight: 1.4 ,fontWeight: 200,}}
+          className="fade-in-up text-white/75 text-[1rem] lg:text-[1.25rem] max-w-[40rem] lg:max-w-[50rem] tracking-[-0.04em] sm:tracking-[0.04em] mt-2"
+          style={{ fontFamily: "var(--font-poppins), sans-serif", lineHeight: 1.4, fontWeight: 200, animationDelay: "0.4s" }}
         >
+        
           Our core, volume profiling, and volatility analytics to support
           data-driven trade decisions and risk management engines that adapt to
           changing market conditions.
         </p>
       </div>
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-25 gap-[1rem] lg:gap-[1.5rem]">
+      <div className="slide-up mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-25 gap-[1rem] lg:gap-[1.5rem] stagger-children" style={{ animationDelay: "0.6s" }}>
         {features.map((f, i) => (
           <BentoBox3D
             key={i}
