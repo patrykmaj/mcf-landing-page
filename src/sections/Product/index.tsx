@@ -33,7 +33,7 @@ const Product = () => {
           Our multi-confirmation system leverages market structure, volume profiling, and volatility analytics to support data-driven trade decisions and risk management engines that adapt to changing market conditions
         </p>
         {/* Product Image/Video Placeholder */}
-        <div className="scale-in relative flex justify-center items-center w-full max-w-3xl mx-auto mt-6 sm:mt-12" style={{ animationDelay: "0.6s" }}>
+        {/* <div className="scale-in relative flex justify-center items-center w-full max-w-3xl mx-auto mt-6 sm:mt-12" style={{ animationDelay: "0.6s" }}>
           <div 
             className="rounded-xl sm:rounded-2xl shadow-2xl w-full h-auto border border-white/10 bg-gradient-to-br from-[#101223]/80 via-blue-900/20 to-[#101223]/80 flex items-center justify-center min-h-[17.5rem] max-h-[25rem]"
             style={{
@@ -49,9 +49,9 @@ const Product = () => {
               <h3 className="fade-in-up text-white text-lg font-semibold mb-2" style={{ animationDelay: "1.2s" }}>MCF Trading Dashboard</h3>
               <p className="fade-in-up text-white/70 text-sm" style={{ animationDelay: "1.4s" }}>Advanced analytics and trade management interface</p>
             </div>
-          </div>
+          </div> */}
           {/* Play button overlay (optional) */}
-          <button
+          {/* <button
             className="scale-in absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 border border-white/30 rounded-full p-1.5 sm:p-2 shadow-lg hover:bg-white/20 transition"
             style={{ backdropFilter: "blur(0.5rem)", animationDelay: "1.6s" }}
             aria-label="Play demo video"
@@ -59,8 +59,8 @@ const Product = () => {
             <svg width="18" height="18" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#fff"/>
             </svg>
-          </button>
-        </div>
+          </button> */}
+        {/* </div> */}
       </div>
     </section>
   );
