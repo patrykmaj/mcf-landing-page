@@ -142,17 +142,17 @@ export default function Navbar() {
 
     {/* Mobile Overlay Menu */}
     {isOpen && (
-      <div className="fade-in fixed inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center space-y-6 z-50 sm:hidden" style={{ animationDelay: "0.1s" }}>
+      <div className="fixed inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center space-y-6 z-50 sm:hidden" style={{ animationDelay: "0.1s" }}>
         {/* Close button */}
         <button
-          className="scale-in absolute top-6 right-6 text-white text-[1.875rem]"
+          className="absolute top-6 right-6 text-white text-[1.875rem] z-50"
           onClick={() => setIsOpen(false)}
           aria-label="Close menu"
           style={{ animationDelay: "0.2s" }}
         >
           ✕
         </button>
-        <ul className="slide-up space-y-4 text-center stagger-children" style={{ animationDelay: "0.3s" }}>
+        <ul className="space-y-4 text-center stagger-children z-50" style={{ animationDelay: "0.3s " }}>
           {navItems.map((item, index) => (
             <li key={item.label} className="fade-in-up" style={{ animationDelay: `${0.4 + index * 0.1}s` }}>
               <Link
@@ -168,7 +168,7 @@ export default function Navbar() {
           ))}
         </ul>
         {/* Highlighted CTA */}
-        <div className="scale-in" style={{ animationDelay: "0.8s" }}>
+        <div className="z-50" style={{ animationDelay: "0.8s" }}>
           <HighlightButton href="https://calendly.com/marketmakermax/next-steps-with-mcf">
             <span onClick={() => setIsOpen(false)} className="block px-4">
               Book a <span className="font-black">Call</span>
