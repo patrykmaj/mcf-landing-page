@@ -10,7 +10,6 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'var(--font-poppins)', 'Arial', 'sans-serif'],
-        mono: ['var(--font-geist-mono)', 'monospace'],
         poppins: ['var(--font-poppins)', 'sans-serif'],
         roboto: ['var(--font-roboto)', 'sans-serif'],
         monda: ['var(--font-monda)', 'sans-serif'],

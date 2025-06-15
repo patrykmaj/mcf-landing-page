@@ -35,7 +35,7 @@ const PricingSection = () => {
       {/* Background Text */}
       <div
         aria-hidden="true"
-        className="fade-in absolute inset-0 flex items-start justify-center z-0 text-[5rem] xs:text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[20rem] font-archivo text-black tracking-wide p-0 overflow-hidden"
+        className="fade-in-up absolute inset-0 flex items-start justify-center z-0 text-[5rem] xs:text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[20rem] font-archivo text-black tracking-wide p-0 overflow-hidden"
         style={{
           textShadow:
             "-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff",
@@ -43,7 +43,7 @@ const PricingSection = () => {
           animationDelay: "0.2s"
         }}
       >
-        <span>PRICING</span>
+        <span className="fade-in-up" style={{ animationDelay: "0.3s" }}>PRICING</span>
       </div>
       <div className="relative z-10">
         {/* Pricing Cards */}
@@ -86,6 +86,7 @@ const PricingSection = () => {
                 <GlowButton
                   width="100%"
                   className="sm:max-w-[23rem] mx-4"
+                  href="https://calendly.com/marketmakermax/next-steps-with-mcf"
                 >
                   Get started
                 </GlowButton>
@@ -164,7 +165,8 @@ const PricingSection = () => {
                 </span>
               </div>
               <div className="fade-in-up mb-2 lg:mb-6 mt-2 w-full flex justify-left" style={{ animationDelay: "1.0s" }}>
-                <HighlightButton width="100%" className="sm:max-w-[23rem] mx-4">
+                <HighlightButton width="100%" className="sm:max-w-[23rem] mx-4"
+                href="https://calendly.com/marketmakermax/next-steps-with-mcf">
                   <span className="font-medium">Apply</span>
                 </HighlightButton>
               </div>

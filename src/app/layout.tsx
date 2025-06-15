@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Poppins, Roboto, Monda, Archivo_Black, Noto_Sans_Hebrew } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -7,10 +7,6 @@ import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 const poppins = Poppins({
@@ -64,7 +60,6 @@ export default function RootLayout({
       <body
         className={[
           geistSans.variable,
-          geistMono.variable,
           poppins.variable,
           roboto.variable,
           monda.variable,
