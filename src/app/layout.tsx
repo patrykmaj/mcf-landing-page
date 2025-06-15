@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Poppins, Roboto, Monda, Archivo_Black, Noto_Sans_Hebrew } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 const poppins = Poppins({
@@ -52,10 +49,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body
         className={[
           geistSans.variable,
-          geistMono.variable,
           poppins.variable,
           roboto.variable,
           monda.variable,
@@ -66,6 +70,52 @@ export default function RootLayout({
       >
         <Navbar />
           {children}
+        
+        {/* Initialize visual load animations */}
+        <Script 
+          id="visual-load-animations"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function initVisualLoadAnimations() {
+                const observerOptions = {
+                  threshold: 0.1,
+                  rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      const element = entry.target;
+                      
+                      if (element.classList.contains('fade-in-up') ||
+                          element.classList.contains('fade-in') ||
+                          element.classList.contains('slide-up') ||
+                          element.classList.contains('scale-in')) {
+                        element.classList.add('animate');
+                        observer.unobserve(element);
+                      }
+                    }
+                  });
+                }, observerOptions);
+
+                const animatedElements = document.querySelectorAll(
+                  '.fade-in-up, .fade-in, .slide-up, .scale-in'
+                );
+                
+                animatedElements.forEach((el) => {
+                  observer.observe(el);
+                });
+              }
+
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initVisualLoadAnimations);
+              } else {
+                initVisualLoadAnimations();
+              }
+            `
+          }}
+        />
       </body>
     </html>
   );

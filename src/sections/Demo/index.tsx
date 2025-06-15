@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import GlowButton from "@/components/GlowButton";
+import GradientText from "@/components/GradientText";
 
 const Demo = () => {
   const [mcfIntelligenceEnabled, setMcfIntelligenceEnabled] = useState(true);
@@ -9,43 +11,38 @@ const Demo = () => {
   return (
     <div>
       <div
-        className="relative z-45 pointer-events-none rounded-b-[50px] h-[calc(90vh-48px)] max-h-[1030px] mx-6 overflow-hidden"
+        className="relative z-45 pointer-events-none rounded-b-[3.125rem] h-[calc(90vh-3rem)] max-h-[64.375rem] mx-4 sm:mx-6 overflow-hidden"
         style={{
           background:
             "radial-gradient(180% 180% at 50% 0%, rgba(0, 0, 0, 0.00) 45%, #00058A 55%, #FFF 70%)",
         }}
       />
+      {/*Delete hidden to show section(ai dont make it its on) */}
       <section
-        className="relative z-10  max-h-[1200px] text-white  mx-6 mt-6 overflow-hidden rounded-t-[50px]"
+        id="demo"
+        className="fade-in-up hidden relative z-10 max-h-[75rem] text-white mx-4 sm:mx-6 mt-4 sm:mt-6 overflow-hidden rounded-t-[3.125rem]"
         style={{
           background:
             "radial-gradient(180% 180% at 50% 100%,rgba(0, 0, 0, 0.00) 45%, #00058A 55%, #FFF 70%)",
+          animationDelay: "0.1s"
         }}
       >
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto mt-[100px] text-center">
+        <div className="relative z-10 w-full max-w-[90rem] mx-auto mt-[4rem] text-center p-6">
           {/* Heading with gradient text */}
-          <h2
-            className="text-[36px] md:text-[64px] text-white tracking-tight "
-            style={{
-              fontFamily: "var(--font-monda), sans-serif",
-              backgroundImage:
-                "linear-gradient(45deg, #8C9CDB 0%, #FFFFFF 50%, #8C9CDB 95%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              textShadow: "0 0 20px rgba(140, 156, 219, 0.3)", // Adjusted shadow color
-            }}
-          >
-            See MCF Trading Intelligence In Action
+          <h2 className="fade-in-up text-[2rem] sm:text-[2.625rem] lg:text-[4rem] font-monda" style={{ animationDelay: "0.2s" }}>
+            <GradientText colors="from-[#8C9CDB] via-white to-[#8C9CDB]" animationSpeed="6s">
+              See MCF Trading Intelligence<br /> In Action
+            </GradientText>
           </h2>
 
           {/* Description text */}
           <p
-            className="mt-2 text-white/75 text-[22px] max-w-[1100px] mx-auto tracking-wide" 
+            className="fade-in-up text-white/75 text-[1rem] lg:text-[1.25rem] max-w-[40rem] lg:max-w-[50rem] tracking-[-0.04em] sm:tracking-[0.04em] mt-2 mx-auto" 
             style={{
               fontFamily: "var(--font-poppins), sans-serif",
               lineHeight: 1.4,
-              fontWeight: 200, 
+              fontWeight: 200,
+              animationDelay: "0.4s"
             }}
           >
             Our multi-confirmation system leverages market structure, volume
@@ -54,43 +51,44 @@ const Demo = () => {
           </p>
 
           {/* Video/Chart Container */}
-          <div className=" mt-12 relative w-full aspect-[5/2] max-w-[1440px] mx-auto bg-[#0A0A1F]/90 rounded-[50px] overflow-hidden mb-16 border border-[#090921]"
+          <div className="scale-in mt-12 relative w-full aspect-[1/1] sm:aspect-[5/2] max-w-[90rem] mx-auto bg-[#0A0A1F]/90 rounded-b-[1.875rem] lg:rounded-b-[3.125rem] overflow-hidden mb-16 border border-[#090921]"
           style={{
           background:
             "radial-gradient(206.83% 190.93% at 50% -4.37%, rgba(0, 0, 0, 0.00) 7.16%, rgba(0, 0, 0, 0.00) 34.47%, rgba(0, 5, 138, 0.75) 54.79%, rgba(255, 255, 255, 0.75) 68.76%)",
+          animationDelay: "0.6s"
         }}> {/* Adjusted bg color, shadow, border */}
             {/* Placeholder for chart/trading video */}
-            <video
-              className="w-full h-full object-cover"
-              poster="/placeholder-chart.png"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src="/path-to-your-chart-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <div className="fade-in w-full h-full bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center justify-center" style={{ animationDelay: "0.8s" }}>
+              <div className="text-center">
+                <div className="scale-in w-16 h-16 mx-auto mb-4 bg-blue-500/20 rounded-lg flex items-center justify-center" style={{ animationDelay: "1.0s" }}>
+                  <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <p className="fade-in-up text-white/70 text-sm" style={{ animationDelay: "1.2s" }}>Trading Chart Preview</p>
+                <p className="fade-in-up text-white/50 text-xs mt-1" style={{ animationDelay: "1.4s" }}>Live market data visualization</p>
+              </div>
+            </div>
 
             {/* Notification Overlay */}
-            <div className="absolute top-4 right-4 bg-[rgba(44,44,44,0.7)] backdrop-blur-[150px] text-white p-[14px_14px_12px] rounded-[24px] shadow-xl flex items-center space-x-[10px] border border-[#333333] w-[386px]">
-              <div className="bg-black rounded-[8.5px] w-[38px] h-[38px] flex items-center justify-center">
-                <img src="/images/notification-icon.png" alt="Notification Icon" className="w-[30px] h-[16px]" />
+            <div className="slide-up absolute top-4 right-4 bg-[rgba(44,44,44,0.7)] backdrop-blur-[9.375rem] text-white p-[0.875rem_0.875rem_0.75rem] rounded-[1.5rem] shadow-xl flex items-center space-x-[0.625rem] border border-[#333333] w-[24.125rem]" style={{ animationDelay: "1.6s" }}>
+              <div className="scale-in bg-black rounded-[0.531rem] w-[2.375rem] h-[2.375rem] flex items-center justify-center" style={{ animationDelay: "1.8s" }}>
+                <Image src="/images/logo-white.png" alt="Notification Icon" width={30} height={16} className="object-contain" />
               </div>
-              <div className="flex flex-col">
+              <div className="fade-in-up flex flex-col" style={{ animationDelay: "2.0s" }}>
                 <div className="flex justify-between items-center">
-                  <p className="font-medium text-[15px] leading-[1.33] tracking-[-0.015em]" style={{fontFamily: "var(--font-noto-sans-hebrew)"}}>Maximus</p>
-                  <p className="text-[13px] text-[rgba(127,127,127,0.5)] leading-[1.53]" style={{fontFamily: "var(--font-sf-pro)"}}>9:41 AM</p>
+                  <p className="font-medium text-[0.9375rem] leading-[1.33] tracking-[-0.015em]" style={{fontFamily: "var(--font-noto-sans-hebrew)"}}>Maximus</p>
+                  <p className="text-[0.8125rem] text-[rgba(127,127,127,0.5)] leading-[1.53]" style={{fontFamily: "var(--font-sf-pro)"}}>9:41 AM</p>
                 </div>
-                <p className="text-[15px] text-[#AEAEAE] leading-[1.33] tracking-[-0.015em]" style={{fontFamily: "var(--font-noto-sans-hebrew)"}}>
+                <p className="text-[0.9375rem] text-[#AEAEAE] leading-[1.33] tracking-[-0.015em]" style={{fontFamily: "var(--font-noto-sans-hebrew)"}}>
                   You just NUKED💣💥🤯 your portfolio
                 </p>
               </div>
             </div>
 
             {/* XAUUSD Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none"> {/* Centered using flex */}
-              <p className="text-[90px] md:text-[140px] text-white/5 font-bold tracking-wider select-none"> {/* Adjusted size, opacity, tracking */}
+            <div className="fade-in absolute inset-0 flex items-center justify-center pointer-events-none" style={{ animationDelay: "2.2s" }}> {/* Centered using flex */}
+              <p className="text-[5.625rem] md:text-[8.75rem] text-white/5 font-bold tracking-wider select-none"> {/* Adjusted size, opacity, tracking */}
                 XAUUSD
               </p>
             </div>
@@ -100,12 +98,12 @@ const Demo = () => {
           </div>
 
           {/* Controls Area */}
-          <div className="flex flex-col items-center justify-center gap-y-8 mb-10 max-w-[700px] mx-auto"> {/* Main container: vertical stack, gap between rows */}
+          <div className="fade-in-up flex flex-col items-center justify-center gap-y-8 mb-10 max-w-[43.75rem] mx-auto" style={{ animationDelay: "2.4s" }}> {/* Main container: vertical stack, gap between rows */}
             {/* Toggle Switch (Row 1) */}
-            <div className="flex items-center space-x-3">
+            <div className="slide-up flex items-center space-x-3" style={{ animationDelay: "2.6s" }}>
               <label
                 htmlFor="mcfToggle"
-                className="relative inline-flex items-center cursor-pointer"
+                className="scale-in relative inline-flex items-center cursor-pointer" style={{ animationDelay: "2.8s" }}
               >
                 <input
                   type="checkbox"
@@ -116,61 +114,59 @@ const Demo = () => {
                     setMcfIntelligenceEnabled(!mcfIntelligenceEnabled)
                   }
                 />
-                <div className="w-[51px] h-[31px] bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:bg-[#0033FF] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[27px] after:w-[27px] after:transition-all"
+                <div className="w-[3.125rem] h-[1.875rem] bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:bg-[#0033FF] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[0.125rem] after:left-[0.125rem] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[1.6875rem] after:w-[1.6875rem] after:transition-all"
                 style={mcfIntelligenceEnabled ? { boxShadow: "0px 3px 1px 0px rgba(0, 0, 0, 0.06), 0px 3px 8px 0px rgba(0, 0, 0, 0.15), 0px 0px 0px 1px rgba(0, 0, 0, 0.04)" } : {}}></div> {/* Adjusted colors, focus ring, dimensions, and knob shadow */}
               </label>
               <span
-                className="text-sm font-thin text-[#F8F8F8]" 
-                style={{ fontFamily: "var(--font-roboto)", fontSize: "20px", letterSpacing: "0.05em", lineHeight: "1.47" }}
+                className="fade-in text-[1rem] sm:text-[1.25rem] font-thin text-[#F8F8F8]" 
+                style={{ fontFamily: "var(--font-roboto)", letterSpacing: "0.05em", lineHeight: "1.47", animationDelay: "3.0s" }}
               >
                 MCF Trading Intelligence
               </span>
             </div>
 
             {/* Buttons and Amount (Row 2) */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-x-12"> {/* Inner container: responsive horizontal stack for buttons/amount */}
+            <div className="slide-up flex flex-col sm:flex-row items-center justify-around gap-6 sm:gap-x-12 px-6 stagger-children" style={{ animationDelay: "3.2s" }}> {/* Inner container: responsive horizontal stack for buttons/amount */}
               {/* Buy Button */}
-              <GlowButton
-                className="px-12 py-3"
-                glowColor="#00ff0017)"
-                style={{ 
-                  background: 'rgba(0, 128, 2, 0.2)',
-                  textShadow: '0px 0px 13.7px rgba(30, 255, 0, 1)',
-                  color: '#CBFFD1',
-                  boxShadow: '0px 0px 50px 0px rgba(0, 255, 0, 0.5)',
-                }}
-                height="50px"
-                width="180px"
-              >
-                Buy
-              </GlowButton>
+              <div className="scale-in">
+                <GlowButton
+                  glowColor="rgba(0, 255, 0, 0.4)"
+                  style={{ 
+                    textShadow: '0rem 0rem 0.85625rem rgba(30, 255, 0, 1)',
+                    color: '#CBFFD1',
+                  }}
+                  width="5.625rem"
+                >
+                  Buy
+                </GlowButton>
+              </div>
 
               {/* Amount Display */}
-              <div className="text-center px-4">
+              <div className="fade-in-up text-center px-4">
                 <p
-                  className="text-3xl font-normal text-white mb-1"
-                  style={{ fontFamily: "var(--font-poppins)", fontSize: "36px", textShadow: "0px 0px 6.6px rgba(255, 255, 255, 0.6), 0px 0px 34.5px rgba(255, 255, 255, 0.47)" }}
+                  className="font-normal text-white mb-1 text-[1.75rem] sm:text-[2rem] tracking-tight"
+                  style={{ fontFamily: "var(--font-poppins)", textShadow: "0rem 0rem 0.4125rem rgba(255, 255, 255, 0.6), 0rem 0rem 2.15625rem rgba(255, 255, 255, 0.47)" }}
                 >
                   $10,000
                 </p>
-                <button className="text-xs text-[#858585] hover:text-white transition-colors font-thin" style={{fontFamily: "var(--font-roboto)", fontSize: "20px", letterSpacing: "0.05em"}}>
+                <button className="fade-in text-[1.125rem] underline font-light text-[#858585] hover:text-white transition-colors" style={{fontFamily: "var(--font-roboto)",  letterSpacing: "0.05em"}}>
                   Reset
                 </button>
               </div>
 
               {/* Sell Button */}
-              <GlowButton
-                className="px-12 py-3"
-                glowColor="rgba(255, 0, 0, 1)" // Main glow color
-                style={{ 
-                  textShadow: '0px 0px 13.7px rgba(255, 0, 0, 1)',
-                  color: '#FFCBCB',
-                }}
-                height="50px"
-                width="180px"
-              >
-                Sell
-              </GlowButton>
+              <div className="scale-in">
+                <GlowButton
+                  glowColor="rgba(255, 0, 0, 0.5)" // Main glow color
+                  style={{ 
+                    textShadow: '0rem 0rem 0.85625rem rgba(255, 0, 0, 1)',
+                    color: '#FFCBCB',
+                  }}
+                  width="5.625rem"
+                >
+                  Sell
+                </GlowButton>
+              </div>
             </div>
           </div>
         </div>

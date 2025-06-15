@@ -18,7 +18,6 @@ export default function Home() {
       <Pricing />
       <Footer />
       <FooterBackground />
-      {/* Landing page sections will be added here */}
     </main>
   );
 }

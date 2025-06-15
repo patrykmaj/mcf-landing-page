@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import GradientText from "@/components/GradientText";
 
 const SCROLL_TEXTS = [
   {
@@ -53,7 +54,7 @@ const AboutSection = () => {
   const [textOpacity, setTextOpacity] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const totalFrames = 168;
+  const totalFrames = 160;
 
   // Smooth text transition function
   const transitionToText = useCallback((newIndex: number) => {
@@ -75,25 +76,48 @@ const AboutSection = () => {
   }, [currentTextIndex, isTransitioning]);
 
   const getImageName = (index: number) =>
-    `/frames/frame_${index.toString().padStart(4, "0")}.jpg`;
+    `/frames/frame_${index.toString().padStart(4, "0")}.webp`;
 
   const updateImage = useCallback((index: number) => {
     if (!contextRef.current || !canvasRef.current) return;
-    if (lastFrameRef.current === index) return; // Don't redraw same frame
+    if (lastFrameRef.current === index && index !== 1) return; // Don't redraw same frame unless it\'s the initial frame
 
     const img = new Image();
     img.src = getImageName(index);
     img.onload = () => {
       if (contextRef.current && canvasRef.current) {
-        contextRef.current.drawImage(
+        const canvas = canvasRef.current;
+        const ctx = contextRef.current;
+
+        // Clear canvas before drawing new image
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Calculate new dimensions and position
+        const screenHeight = canvas.height;
+        const screenWidth = canvas.width;
+
+        const targetImageHeight = screenHeight * (1);
+        const aspectRatio = img.width / img.height;
+        const targetImageWidth = targetImageHeight * aspectRatio;
+
+        const imageCenterX = screenWidth * (3/4);
+        const imageX = imageCenterX - targetImageWidth / 2;
+        
+        // Center image vertically
+        const imageY = (screenHeight - targetImageHeight) / 2;
+
+        ctx.drawImage(
           img,
-          0,
-          0,
-          canvasRef.current.width,
-          canvasRef.current.height
+          imageX,
+          imageY,
+          targetImageWidth,
+          targetImageHeight
         );
         lastFrameRef.current = index;
       }
+    };
+    img.onerror = () => {
+      // console.error(\`Error loading image: ${img.src}\`);
     };
   }, []);
 
@@ -123,15 +147,15 @@ const AboutSection = () => {
     // Different behavior when actively scrolling vs momentum phase
     if (isScrolling) {
       // During active scrolling: responsive movement with slight momentum
-      const responsiveEase = 0.25; // More responsive when actively scrolling
-      const momentumDamping = 0.8; // Maintain some momentum
+      const responsiveEase = 0.1; // More responsive when actively scrolling
+      const momentumDamping = 0.2; // Maintain some momentum
       
       const easingForce = distance * responsiveEase;
       velocityRef.current = velocityRef.current * momentumDamping + easingForce;
     } else {
       // During momentum phase: pure linear decay for smooth continuation
-      const momentumDecay = 0.88; // Slower decay for longer momentum
-      const minMomentumEase = 0.05; // Minimal target attraction during momentum
+      const momentumDecay = 0.80; // Slower decay for longer momentum (was 0.88)
+      const minMomentumEase = 0.02; // Minimal target attraction during momentum (was 0.05)
       
       // Apply very gentle target attraction to prevent drift
       const gentleEasing = distance * minMomentumEase;
@@ -157,6 +181,16 @@ const AboutSection = () => {
       animationFrameRef.current = requestAnimationFrame(animateFrame);
     }
   }, [animateFrame]);
+
+  const resizeCanvas = useCallback(() => {
+    if (canvasRef.current && contextRef.current) {
+      canvasRef.current.width = window.innerWidth;
+      canvasRef.current.height = window.innerHeight;
+      // Redraw the last successfully drawn frame to maintain visual consistency
+      // updateImage will use the new drawing logic
+      updateImage(lastFrameRef.current || 1); 
+    }
+  }, [updateImage]); // updateImage is stable due to its own empty deps array
 
   const handleScroll = useCallback(() => {
     if (!sectionRef.current) return;
@@ -290,53 +324,49 @@ const AboutSection = () => {
     }
   }, [currentTextIndex, totalFrames, startSmoothAnimation, transitionToText, showText]);
 
+  // Effect for initial canvas setup and first frame draw (runs once on mount)
   useEffect(() => {
     if (!canvasRef.current) return;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    if (!context) return;
 
-    contextRef.current = canvasRef.current.getContext("2d");
+    contextRef.current = context;
 
-    // Set canvas size
-    const resizeCanvas = () => {
-      if (canvasRef.current) {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
-      }
-    };
+    // Initial canvas dimensions
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const initialFrameToLoad = 1; 
+    // Ensure all frame refs are at the starting point.
+    currentFrameRef.current = initialFrameToLoad;
+    targetFrameRef.current = initialFrameToLoad;
+    lastTargetFrameRef.current = initialFrameToLoad;
+    
+    // Trigger the first image draw using updateImage, which now contains the correct logic
+    updateImage(initialFrameToLoad);
 
-    resizeCanvas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty array: runs only on mount
+
+  // Effect for resize listener
+  useEffect(() => {
     window.addEventListener("resize", resizeCanvas);
-
-    // Load first frame
-    const img = new Image();
-    img.src = getImageName(1);
-    img.onload = () => {
-      if (canvasRef.current && contextRef.current) {
-        contextRef.current.drawImage(
-          img,
-          0,
-          0,
-          canvasRef.current.width,
-          canvasRef.current.height
-        );
-      }
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
     };
+  }, [resizeCanvas]);
 
-    // Add scroll listener
+  // Effect for scroll listener and initial scroll check
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
-    // Initial scroll check in case section is already in view
-    handleScroll();
+    handleScroll(); // Initial check in case section is already in view
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", resizeCanvas);
-      
-      // Clear scroll timeout
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-      
-      // Cancel any running animation
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
         animationFrameRef.current = null;
@@ -349,30 +379,23 @@ const AboutSection = () => {
   return (
     <>
       {/* Title Section */}
-      <section className="relative w-full rounded-b-[50px] z-45">
+      <section id="about" className="fade-in-up relative w-full rounded-b-[50px] z-45" style={{ animationDelay: "0.1s" }}>
         <div className="w-full max-w-[1440px] mx-auto px-6 pb-24">
-          <h2
-            className="text-[64px] text-white tracking-tight"
-            style={{
-              fontFamily: "var(--font-monda), sans-serif",
-              color: "#8C9CDB",
-              backgroundImage:
-                "linear-gradient(45deg, #8C9CDB 0%, #FFFFFF 30%, #8C9CDB 65%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            <span className="text-blue-200">What Sets</span> MCF Apart?
+          <h2 className="fade-in-up text-[2rem] sm:text-[3rem] lg:text-[4rem] font-monda" style={{ animationDelay: "0.2s" }}>
+            <GradientText colors="from-[#5e71bd] via-white to-[#8C9CDB]" animationSpeed="4s">
+              What Sets MCF Apart?
+            </GradientText>
           </h2>
           <p
-            className="text-white/75 text-[20px] max-w-[850px] tracking-wide mt-2"
+            className="fade-in-up text-white/75 text-[1rem] lg:text-[1.25rem] max-w-[40rem] lg:max-w-[50rem] tracking-[-0.04em] sm:tracking-[0.04em] mt-2"
             style={{ 
               fontFamily: "var(--font-poppins), sans-serif", 
               lineHeight: 1.4, 
-              fontWeight: 200 
+              fontWeight: 200,
+              animationDelay: "0.4s"
             }}
           >
+          
             Our multi-confirmation system leverages market structure, volume
             profiling, and volatility analytics to support data-driven trade
             decisions and risk management engines that adapt to changing market
@@ -380,15 +403,15 @@ const AboutSection = () => {
           </p>
 
           {/* Scroll Indicator */}
-          <div className="flex flex-col items-center mt-24">
+          <div className="fade-in-up flex flex-col items-center mt-12" style={{ animationDelay: "0.6s" }}>
             <p
-              className="text-white/25 text-[14px] mb-2"
-              style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+              className="fade-in text-white/25 text-[14px] mb-2"
+              style={{ fontFamily: "var(--font-poppins), sans-serif", animationDelay: "0.7s" }}
             >
               Scroll to explore
             </p>
-            <div className="w-6 h-10 border-2 border-white/25 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-white/30 rounded-full mt-2 animate-bounce"></div>
+            <div className="scale-in w-6 h-10 border-2 border-white/25 rounded-full flex justify-center" style={{ animationDelay: "0.8s" }}>
+              <div className="w-1 h-3 bg-[#ffa500] rounded-full mt-2 animate-bounce"></div>
             </div>
           </div>
         </div>
@@ -404,37 +427,36 @@ const AboutSection = () => {
             opacity: videoOpacity
           }}
         >
-          <canvas ref={canvasRef} className="w-full h-full object-cover" />
+          <canvas ref={canvasRef} className=" w-full h-full object-cover " />
 
           {/* Text Overlay with Luxury Transitions */}
           {showText && currentText && (
             <div 
-              className="absolute text-right right-1/2 top-1/2 -translate-y-1/2 max-w-[720px] z-40 transition-all duration-500 ease-out"
+              className="absolute bottom-30 lg:bottom-0 lg:text-right lg:right-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:max-w-[720px] z-40 transition-all duration-500 ease-out "
               style={{ 
                 opacity: Math.min(videoOpacity, textOpacity),
-                transform: `translateY(-50%) translateX(${textOpacity === 1 ? '0' : '20px'})`,
+                transform: `translateY(50%) translateX(${textOpacity === 1 ? '0' : '20px'})`,
                 filter: `blur(${textOpacity === 1 ? '0' : '8'}px)`
               }}
             >
-              <div className="text-white">
+              <div className="text-white pl-6 ">
                 <h3
-                  className="text-[20px] capitalize transition-all duration-500 ease-out"
+                  className=" font-medium uppercase text-[0.9rem] sm:text-[1rem] transition-all duration-500 ease-out"
                   style={{
                     fontFamily: "var(--font-poppins), sans-serif",
                     fontWeight: 400,
                     color: "#4e5899",
-
+                    
                     transform: `translateY(${textOpacity === 1 ? '0' : '10px'})`,
                   }}
                 >
                   {currentText.title}
                 </h3>
                 <p
-                  className="mt-2 text-[36px] text-white/90 ml-auto transition-all duration-500 ease-out delay-100"
+                  className="text-[1.25rem] font-light sm:text-[1.375rem] xl:text-[1.625rem] mt-2 text-white ml-auto transition-all duration-500 ease-out delay-100"
                   style={{
                     fontFamily: "var(--font-poppins), sans-serif",
                     lineHeight: 1,
-                    fontWeight: 200,
                     transform: `translateY(${textOpacity === 1 ? '0' : '15px'})`,
                   }}
                 >
@@ -442,14 +464,14 @@ const AboutSection = () => {
                 </p>
 
                 {/* Enhanced Progress indicator with luxury transitions */}
-                <div className="mt-6 justify-end flex items-center space-x-2 transition-all duration-500 ease-out delay-200"
+                <div className="mt-6 lg:justify-end flex items-center space-x-2 transition-all duration-500 ease-out delay-200"
                      style={{ transform: `translateY(${textOpacity === 1 ? '0' : '10px'})` }}>
                   {SCROLL_TEXTS.map((_, index) => (
                     <div
                       key={index}
                       className={`h-1 transition-all duration-500 ease-out ${
                         index === currentTextIndex
-                          ? "w-8 bg-gradient-to-r from-white/80 to-white shadow-sm"
+                          ? "w-8 bg-gradient-to-r from-[#ffa500] to-[#ffa500] shadow-sm"
                           : "w-2 bg-white/30 hover:bg-white/50"
                       }`}
                       style={{

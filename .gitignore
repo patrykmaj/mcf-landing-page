@@ -40,10 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# embedded repositories
-Figma-Context-MCP/
-ffmpeg/
+# embedded repositories (removed)
 
-# large media files
-public/input.mp4
-public/frames/
+# large media files (removed)
+
+public/images/logo-white.png
+
+.vscode
