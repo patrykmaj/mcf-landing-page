@@ -45,3 +45,5 @@ next-env.d.ts
 # large media files (removed)
 
 public/images/logo-white.png
+
+.vscode
