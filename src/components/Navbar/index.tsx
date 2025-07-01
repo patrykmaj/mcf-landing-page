@@ -7,7 +7,7 @@ import HighlightButton from "@/components/HighlightButton";
 const navItems = [
   { label: "Product", href: "#product" },
   { label: "Features", href: "#features" },
-  { label: "About", href: "#about" },
+  // { label: "About", href: "#about" },
   // { label: "Demo", href: "#demo" },
   { label: "Pricing", href: "#pricing" },
 ];

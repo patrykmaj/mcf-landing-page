@@ -1,4 +1,4 @@
-import Spline from '@splinetool/react-spline/next';
+// import Spline from '@splinetool/react-spline/next';
 import GlowButton from "@/components/GlowButton";
 import HighlightButton from "@/components/HighlightButton";
 import TrueFocus from "@/components/TrueFocus";
@@ -15,7 +15,15 @@ export default function Hero() {
     >
       {/* Spline animation background */}
       <div className="fade-in absolute inset-0 w-[1300px] -left-[600px] top-[64px] sm:left-0 sm:w-full h-full z-0" style={{ animationDelay: "0.1s" }}>
-        <Spline scene="https://prod.spline.design/UypH9NeByOMsn96Q/scene.splinecode" />
+        {/* <Spline scene="https://prod.spline.design/UypH9NeByOMsn96Q/scene.splinecode" /> */}
+        <video
+            src="/animations/core.webm"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
       </div>
       {/* Radial gradient overlay */}
       <div
