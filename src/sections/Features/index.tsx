@@ -61,7 +61,7 @@ const Features = () => {
         </h2>
         <p
           className="fade-in-up text-white/75 text-[1rem] lg:text-[1.25rem] max-w-[40rem] lg:max-w-[50rem] tracking-[-0.04em] sm:tracking-[0.04em] mt-2"
-          style={{ fontFamily: "var(--font-poppins), sans-serif", lineHeight: 1.4, fontWeight: 200, animationDelay: "0.4s" }}
+          style={{ fontFamily: "var(--font-poppins), sans-serif", lineHeight: 1.4, fontWeight: 200, animationDelay: "0.2s" }}
         >
         
           Our core, volume profiling, and volatility analytics to support
@@ -69,7 +69,7 @@ const Features = () => {
           changing market conditions.
         </p>
       </div>
-      <div className="slide-up mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-25 gap-[1rem] lg:gap-[1.5rem] stagger-children" style={{ animationDelay: "0.6s" }}>
+      <div className="slide-up mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-25 gap-[1rem] lg:gap-[1.5rem] stagger-children" style={{ animationDelay: "0.3s" }}>
         {features.map((f, i) => (
           <BentoBox3D
             key={i}
