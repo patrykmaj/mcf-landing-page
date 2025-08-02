@@ -309,7 +309,7 @@ const PricingSection = () => {
               animationDelay: "0.9s"
             }}
           >
-            If you don&apos;t know which product to choose lets get on a call! Well get you through our offer blah blah blah!
+            If you don&apos;t know which product to choose lets get on a call! We&apos;ll get you through our offer!
           </p>
           <div className="scale-in w-full" style={{ animationDelay: "1s" }}>
             <GlowButton
